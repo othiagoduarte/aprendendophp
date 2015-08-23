@@ -1,21 +1,23 @@
 <?php 
 	
-	$lista_tarefa = array();
-
 	session_start(); 
-			
+	
+	$lista_tarefa = array();
+	
+
+	if (isset($_GET['nome'])) {
+		
+		$_SESSION['lista_tarefa'][] = $_GET['nome'];
+					
+	}
+
 	if (isset($_SESSION['lista_tarefa'])) {
 		
 		$lista_tarefa = $_SESSION['lista_tarefa']; 
 
 	}
 
-	if (isset($_GET['nome'])) {
-		
-		$lista_tarefa = $_GET['nome'];
-					
-	}		
-	
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,6 +28,7 @@
 	<body>
 		
 		<h1>Gerenciador de tarefas</h1>
+		
 		<form>	
 			<fieldset>
 				<legend>Nova Tarefa</legend>
@@ -47,5 +50,6 @@
 				</tr>
 			<?php endforeach; ?>
 		</table>
+	
 	</body>
 </html>
