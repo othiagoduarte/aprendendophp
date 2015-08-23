@@ -2,6 +2,7 @@
 	
 	session_start(); 
 	
+	include "data_base.php";
 	
 	if (isset($_GET['nome']) && $_GET['nome'] != '') {
 		
@@ -33,18 +34,21 @@
 			$tarefa['concluida'] = 'não';
 		}
 		
-		$_SESSION['lista_tarefa'][] = $tarefa;			
+		//$_SESSION['lista_tarefa'][] = $tarefa;			
+		gravar_tarefas($tarefa);
 	}	
 	 
-	//Atualizando a lista de tarefas salva na sessão
-	if (isset($_SESSION['lista_tarefa'])) {
+	// //Atualizando a lista de tarefas salva na sessão
+	// if (isset($_SESSION['lista_tarefa'])) {
 		
-		$lista_tarefa = $_SESSION['lista_tarefa']; 
+	// 	$lista_tarefa = $_SESSION['lista_tarefa']; 
 
-	}else{
+	// }else{
 
-		$lista_tarefa = array();		
-
-	}	
+	// 	$lista_tarefa = array();		
+				
+	// }	
+	
+	$lista_tarefa = buscar_todas_tarefas($conexao);
 
 	include "view_tarefas.php";
