@@ -1,5 +1,23 @@
+<?php 
+	
+	$lista_tarefa = array();
+
+	session_start(); 
+			
+	if (isset($_GET['nome'])) {
+		
+		$_SESSION['lista_tarefa'][] = $_GET['nome'];
+					
+	}
+		
+	if (isset($_SESSION['lista_tarefa'])) {
+		
+		$lista_tarefa = $_SESSION['lista_tarefa']; 
+
+	}
+
+?>
 <!DOCTYPE html>
-<?php session_start() ?>
 <html>
 	<head>
 		<title>Aprendendo PHP</title>
@@ -18,25 +36,7 @@
 
 			</fieldset>
 		</form>
-		<?php
 			
-			if (isset($_GET['nome'])) {
-				
-				$_SESSION['lista_tarefa'][] = $_GET['nome'];
-							
-			}
-			
-			$lista_tarefa = array();
-
-			if (isset($_SESSION['lista_tarefa'])) {
-				
-				$lista_tarefa = $_SESSION['lista_tarefa']; 
-				
-			}
-
-
-		?>
-	
 		<table >
 			<tr>
 				<td>Tarefa</td>
