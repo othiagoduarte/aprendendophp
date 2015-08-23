@@ -62,7 +62,7 @@
 					<td> <?php echo $indice =  ($indice + 1) ?> </td>
 					<td> <?php echo $tarefa['nome'] ?></td>
 					<td> <?php echo $tarefa['descricao'] ?></td>
-					<td> <?php echo $tarefa['prazo'] ?></td>
+					<td> <?php echo traduzir_data_sistema($tarefa['prazo']) ?></td>
 					<td> <?php echo traduzir_prioridade($tarefa['prioridade']) ?></td>
 					<td> <?php echo traduzir_conclusao( $tarefa['concluida'] )  ?></td>
 				</tr>

@@ -30,7 +30,7 @@
 		}
 		
 		if (isset($_GET['concluida']) ) {
-			$tarefa['concluida'] = traduzir_conclusao($_GET['concluida']);	
+			$tarefa['concluida'] =1;	
 		}else{
 			$tarefa['concluida'] = 0;
 		}

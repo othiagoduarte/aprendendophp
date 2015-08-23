@@ -6,23 +6,23 @@ function traduzir_prioridade($codigo){
 	
 	switch($codigo){
 
-		case 0:
+		case "0":
 			$prioridade = "Baixa";
 			break;
-		case 1:
+		case "1":
 			$prioridade = "Média";
 			break;
-		case 2:
+		case "2":
 			$prioridade = "Alta";
 			break;
 		case "baixa":
-			$prioridade = 0;
+			$prioridade = "0";
 			break;
 		case "media":
-			$prioridade = 1;
+			$prioridade = "1";
 			break;
 		case "alta":
-			$prioridade = 2;
+			$prioridade = "2";
 			break;
 
 	}
@@ -40,12 +40,6 @@ function traduzir_conclusao($codigo){
 			break;
 		case 1:
 			$concluida = "Sim";
-			break;
-		case "nao":
-			$concluida = 0;
-			break;
-		case "sim":
-			$concluida = 1;
 			break;
 		}
 	
