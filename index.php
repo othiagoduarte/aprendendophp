@@ -4,18 +4,18 @@
 
 	session_start(); 
 			
-	if (isset($_GET['nome'])) {
-		
-		$_SESSION['lista_tarefa'][] = $_GET['nome'];
-					
-	}
-		
 	if (isset($_SESSION['lista_tarefa'])) {
 		
 		$lista_tarefa = $_SESSION['lista_tarefa']; 
 
 	}
 
+	if (isset($_GET['nome'])) {
+		
+		$lista_tarefa = $_GET['nome'];
+					
+	}		
+	
 ?>
 <!DOCTYPE html>
 <html>
