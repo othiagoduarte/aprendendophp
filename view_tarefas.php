@@ -25,11 +25,11 @@
 						Prioridade
 					</legend>
 					<label>
-						<input type="radio" name="prioridade" value="Baixa" checked>
+						<input type="radio" name="prioridade" value="baixa" checked>
 						Baixa
 					</label>
 					<label>
-						<input type="radio" name="prioridade" value="Media" checked>
+						<input type="radio" name="prioridade" value="media" />
 						Media
 					</label>
 					<label>
@@ -63,8 +63,8 @@
 					<td> <?php echo $tarefa['nome'] ?></td>
 					<td> <?php echo $tarefa['descricao'] ?></td>
 					<td> <?php echo $tarefa['prazo'] ?></td>
-					<td> <?php echo $tarefa['prioridade'] ?></td>
-					<td> <?php echo $tarefa['concluida'] ?></td>
+					<td> <?php echo traduzir_prioridade($tarefa['prioridade']) ?></td>
+					<td> <?php echo traduzir_conclusao( $tarefa['concluida'] )  ?></td>
 				</tr>
 			<?php endforeach; ?>
 		</table>

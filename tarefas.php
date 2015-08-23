@@ -1,9 +1,9 @@
 <?php 
-	
-	session_start(); 
-	
+	include "util.php";
 	include "data_base.php";
 	
+	session_start(); 
+
 	if (isset($_GET['nome']) && $_GET['nome'] != '') {
 		
 		$tarefa = array();
@@ -17,38 +17,32 @@
 		}
 
 		if (isset($_GET['prazo'])) {
-			$tarefa['prazo'] = $_GET['prazo'];	
+			$tarefa['prazo'] = traduzir_data_mysql($_GET['prazo'] );	
+			
 		}else{
 			$tarefa['prazo'] = '';
 		}
 		
 		if (isset($_GET['prioridade'])) {
-			$tarefa['prioridade'] = $_GET['prioridade'];	
+			$tarefa['prioridade'] = traduzir_prioridade( $_GET['prioridade']);	
 		}else{
-			$tarefa['prioridade'] = '';
+			$tarefa['prioridade'] = 0;
 		}
 		
-		if (isset($_GET['concluida'])) {
-			$tarefa['concluida'] = $_GET['concluida'];	
+		if (isset($_GET['concluida']) ) {
+			$tarefa['concluida'] = traduzir_conclusao($_GET['concluida']);	
 		}else{
-			$tarefa['concluida'] = 'não';
+			$tarefa['concluida'] = 0;
 		}
 		
-		//$_SESSION['lista_tarefa'][] = $tarefa;			
-		gravar_tarefas($tarefa);
+		$_SESSION['tarefa'][] = $tarefa;			
+		
+		gravar_tarefas($conexao,$tarefa);
+	
 	}	
-	 
-	// //Atualizando a lista de tarefas salva na sessão
-	// if (isset($_SESSION['lista_tarefa'])) {
-		
-	// 	$lista_tarefa = $_SESSION['lista_tarefa']; 
-
-	// }else{
-
-	// 	$lista_tarefa = array();		
-				
-	// }	
 	
 	$lista_tarefa = buscar_todas_tarefas($conexao);
+	
+	$_SESSION['lista_tarefa'][] = $lista_tarefa ;
 
 	include "view_tarefas.php";

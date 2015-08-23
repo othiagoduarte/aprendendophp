@@ -13,13 +13,7 @@
 		
 		die();
 
-	}else{
-
-		echo "Conectado";
 	}
-	return $conexao;
-
-
 
 function buscar_todas_tarefas($cnx){
 
@@ -29,6 +23,7 @@ function buscar_todas_tarefas($cnx){
 	
 	while ($tarefa = mysqli_fetch_assoc($resultado)) {
 	 	$tarefas[] = $tarefa;	
+		
 	}
 
 	return $tarefas;
@@ -37,12 +32,13 @@ function buscar_todas_tarefas($cnx){
 
 function gravar_tarefas($cnx,$tarefa){
 
-
-	$query = '';
-	$query = "INSERT INTO TAREFAS 
-			  (Nome, Descricao, prioridade)
-			  values
-			  ('teste',teste,teste)";
+	$query = "INSERT INTO TAREFAS (Nome, Descricao, prioridade , prazo, concluida)
+			  values('{$tarefa['nome']}'
+			  	    ,'{$tarefa['descricao']}' 
+			  	    , {$tarefa['prioridade']}
+					,'{$tarefa['prazo']}'
+					, {$tarefa['concluida']}
+			  	    ) ";
+	echo $query;
 	mysqli_query($cnx,$query);
-
 }
