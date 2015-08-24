@@ -1,6 +1,6 @@
 <?php 
-	include "util.php";
-	include "data_base.php";
+	include "util/util.php";
+	include "bd/data_base.php";
 	
 	session_start(); 
 
@@ -45,4 +45,4 @@
 	
 	$_SESSION['lista_tarefa'][] = $lista_tarefa ;
 
-	include "view_tarefas.php";
+	include "view/view_tarefas.php";

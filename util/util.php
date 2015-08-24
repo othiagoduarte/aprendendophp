@@ -31,20 +31,11 @@ function traduzir_prioridade($codigo){
 }
 function traduzir_conclusao($codigo){
 
-	$concluida = "";
-		
-	switch($codigo){
-
-		case 0:
-			$concluida = "Não";
-			break;
-		case 1:
-			$concluida = "Sim";
-			break;
-		}
-	
-	return $concluida;
-
+	if ($codigo == 1) {
+		return "Sim";
+	}else{		
+		return "Não";
+	}
 }
 
 function traduzir_data_mysql($data){

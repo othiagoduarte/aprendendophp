@@ -30,6 +30,19 @@ function buscar_todas_tarefas($cnx){
 
 }
 
+function buscar_todas_tarefas_byId($cnx,$id){
+
+	$tarefas = array();
+	$query = 'SELECT * FROM TAREFAS WHERE ID = '.$id;
+	$resultado = mysqli_query( $cnx, $query);
+	
+	while ($tarefa = mysqli_fetch_assoc($resultado)) {
+	 	$tarefas[] = $tarefa;	
+	}
+
+	return $tarefas;
+
+}
 function gravar_tarefas($cnx,$tarefa){
 
 	$query = "INSERT INTO TAREFAS (Nome, Descricao, prioridade , prazo, concluida)

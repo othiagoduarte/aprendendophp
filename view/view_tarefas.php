@@ -54,6 +54,7 @@
 				<th>Prazo</th>
 				<th>Prioridade</th>
 				<th>Concluída</th>
+				<th>Editar</th>
 			</tr>
 			<?php
 				$indice = 0; 
@@ -65,6 +66,7 @@
 					<td> <?php echo traduzir_data_sistema($tarefa['prazo']) ?></td>
 					<td> <?php echo traduzir_prioridade($tarefa['prioridade']) ?></td>
 					<td> <?php echo traduzir_conclusao( $tarefa['concluida'] )  ?></td>
+					<td> <a href="editar.php?id=<?php echo $tarefa['id']; ?>">Editar</td>
 				</tr>
 			<?php endforeach; ?>
 		</table>
