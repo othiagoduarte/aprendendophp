@@ -27,20 +27,17 @@ function buscar_todas_tarefas($cnx){
 	}
 
 	return $tarefas;
+	
 
 }
 
-function buscar_todas_tarefas_byId($cnx,$id){
+function buscar_tarefas_byId($cnx,$id){
 
 	$tarefas = array();
-	$query = 'SELECT * FROM TAREFAS WHERE ID = '.$id;
+	$query = "SELECT * FROM TAREFAS WHERE ID = ". $id ;
 	$resultado = mysqli_query( $cnx, $query);
-	
-	while ($tarefa = mysqli_fetch_assoc($resultado)) {
-	 	$tarefas[] = $tarefa;	
-	}
-
-	return $tarefas;
+		 	
+	return mysqli_fetch_assoc($resultado);;
 
 }
 function gravar_tarefas($cnx,$tarefa){
@@ -52,6 +49,5 @@ function gravar_tarefas($cnx,$tarefa){
 					,'{$tarefa['prazo']}'
 					, {$tarefa['concluida']}
 			  	    ) ";
-	echo $query;
 	mysqli_query($cnx,$query);
 }

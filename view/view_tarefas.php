@@ -7,19 +7,20 @@
 	<body>
 		
 		<h1>Gerenciador de tarefas</h1>
-		
-		<form >	
-			<fieldset>
+		<div >
+		<form  action="cadastrarTarefa.php" style="width: 40%">	
+			<fieldset >
 				<legend>Nova Tarefa</legend>
-				<label>Tarefa:<input type="text" name="nome"/></label>
+				<label>Tarefa:<br><input type="text" name="nome"/></label>
+				<br>
 				<label>
-					Descrição (opcional):
-					<textarea name="descricao"></textarea>
+					Descrição (opcional):<br><textarea name="descricao" style="margin: 0px; width: 451px; height: 81px;"></textarea>
 				</label>
+				<br>				
 				<label>
-					prazo (opicional):
-					<input type="text" name="prazo">
+					prazo (opicional):<br><input type="text" name="prazo">
 				</label>
+				<br>
 				<fieldset>
 					<legend>
 						Prioridade
@@ -37,39 +38,18 @@
 						Alta
 					</label>
 				</fieldset>
+				<br>
 				<label>
 					Tarefa Concluída
 					<input type="checkbox" name="concluida" value="sim"/>	
 				</label>
-				<input type="submit" value="cadastrar"  />
+				<br><br><input type="submit" value="cadastrar"  />
 			</fieldset>
 		</form>
+		</div>
 		<hr><br>
-		<table border="1" >
-			<legend>Tarefas cadastradas</legend>
-			<tr>
-				<th>#</th>
-				<th>Tarefa</th>
-				<th>Descricao</th>
-				<th>Prazo</th>
-				<th>Prioridade</th>
-				<th>Concluída</th>
-				<th>Editar</th>
-			</tr>
-			<?php
-				$indice = 0; 
-				foreach ($lista_tarefa as $tarefa) : ?>
-				<tr>
-					<td> <?php echo $indice =  ($indice + 1) ?> </td>
-					<td> <?php echo $tarefa['nome'] ?></td>
-					<td> <?php echo $tarefa['descricao'] ?></td>
-					<td> <?php echo traduzir_data_sistema($tarefa['prazo']) ?></td>
-					<td> <?php echo traduzir_prioridade($tarefa['prioridade']) ?></td>
-					<td> <?php echo traduzir_conclusao( $tarefa['concluida'] )  ?></td>
-					<td> <a href="editar.php?id=<?php echo $tarefa['id']; ?>">Editar</td>
-				</tr>
-			<?php endforeach; ?>
-		</table>
-	
+		<?php 
+			include "listarTarefas.php";
+		 ?>
 	</body>
 </html>
